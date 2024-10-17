@@ -32,6 +32,7 @@ return {
 				"pyright",
                 "lua_ls",
                 "rust_analyzer",
+				"gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -56,6 +57,12 @@ return {
                     vim.g.zig_fmt_autosave = 0
 
                 end,
+				["gopls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.gopls.setup {
+						usePlaceholders = true,
+					}
+				end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
@@ -84,8 +91,9 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<TAB>'] = cmp.mapping.confirm({ select = true }),
+                ['<enter>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
+
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
