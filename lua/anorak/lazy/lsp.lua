@@ -60,6 +60,7 @@ return {
 				["gopls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.gopls.setup {
+						staticcheck = true,
 						usePlaceholders = true,
 					}
 				end,
@@ -93,7 +94,6 @@ return {
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<enter>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
-
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },

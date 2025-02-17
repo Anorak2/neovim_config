@@ -1,6 +1,7 @@
 require("anorak.set")
 require("anorak.remap")
 require("anorak.lazy_init")
+require("anorak.dap_conf")
 
 vim.cmd[[colorscheme tokyonight]]
 
