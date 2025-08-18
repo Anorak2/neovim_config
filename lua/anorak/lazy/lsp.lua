@@ -30,7 +30,6 @@ return {
 				"cssls",
 				"clangd",
 				"pyright",
-                "lua_ls",
                 "rust_analyzer",
 				"gopls",
             },
@@ -40,23 +39,6 @@ return {
                         capabilities = capabilities
                     }
                 end,
-
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
-
-                end,
 				["gopls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.gopls.setup {
@@ -64,20 +46,6 @@ return {
 						usePlaceholders = true,
 					}
 				end,
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "Lua 5.1" },
-                                diagnostics = {
-                                    globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
-                        }
-                    }
-                end,
             }
         })
 
