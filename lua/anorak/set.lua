@@ -1,5 +1,5 @@
 vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = true  -- replaces the objective line # with cursor placement based
 -- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.tabstop = 4
@@ -19,5 +19,9 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+-- Sets the leader to the space bar
 vim.g.mapleader = " "
 vim.opt.whichwrap = "<,>,[,]"
+
+-- Used to make whole words wrap instead of individual letters
+vim.o.linebreak = true
