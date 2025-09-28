@@ -61,6 +61,7 @@ return {
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<enter>'] = cmp.mapping.confirm({ select = true }),
+				['<C-e>'] = cmp.mapping.close(),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
