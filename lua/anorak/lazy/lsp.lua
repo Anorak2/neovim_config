@@ -32,6 +32,7 @@ return {
 				"pyright",
                 "rust_analyzer",
 				"gopls",
+
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -71,16 +72,28 @@ return {
                 { name = 'buffer' },
             })
         })
-
+		-- Fancy diagnostic signs
         vim.diagnostic.config({
-            -- update_in_insert = true,
+            severity_sort = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "✘",
+                    [vim.diagnostic.severity.WARN]  = "▲",
+                    [vim.diagnostic.severity.HINT]  = "⚑",
+                    [vim.diagnostic.severity.INFO]  = "»",
+                },
+            },
+            virtual_text = {
+                prefix  = "●",
+                spacing = 4,
+            },
             float = {
                 focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
+                style     = "minimal",
+                border    = "rounded",
+                source    = "always",
+                header    = "",
+                prefix    = "",
             },
         })
     end
