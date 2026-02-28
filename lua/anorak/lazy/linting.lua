@@ -16,6 +16,9 @@ return {
             args = {
                 "--disable=C0301,C0411,C0412,C0413,E0401,W0611",
                 "--output-format=json",
+				"--score=no", -- suppress score line that "pollutes" output
+                "--from-stdin", -- avoid file path issues 
+				function() return vim.api.nvim_buf_get_name(0) end,
             },
         })
 
