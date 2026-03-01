@@ -24,22 +24,25 @@ return {
 
         -- eslint_d: disable import resolution and line-length via a base config.
 		-- added a flags so that there's no warning for unresolved plugins
+		-- rule  "curly" throws an error when there is code such as if(cond) return, it must have broken
+		--     out curly braces
         lint.linters.eslint_d = vim.tbl_deep_extend("force", lint.linters.eslint_d, {
             args = {
                 "--no-ignore",               -- don't silently skip files
                 "--rule", '{"max-len": 0}',  -- line length: off
                 "--rule", '{"import/no-unresolved": 0}',  -- import resolution: off
                 "--format", "json",
-                "--stdin",
-                "--stdin-filename", function() return vim.api.nvim_buf_get_name(0) end,
+                "--stdin", -- used for reliability
+                "--stdin-filename", function() return vim.api.nvim_buf_get_name(0) end, -- used for reliability
+				"--rule", '{"curly": ["error", "all"]}',
             },
         })
 
         -- clangtidy: trailing return allows for int func() instead of auto func() -> int
+		-- readability-braces prevents if statements like if(condition) return;
         lint.linters.clangtidy = vim.tbl_deep_extend("force", lint.linters.clangtidy, {
             args = {
-                "--checks=-modernize-use-trailing-return-type,-llvm-header-guard",
-                "--",
+				"--checks=-modernize-use-trailing-return-type,-llvm-header-guard,+readability-braces-around-statements"
             },
         })
 
