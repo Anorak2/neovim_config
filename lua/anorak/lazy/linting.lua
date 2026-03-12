@@ -122,7 +122,7 @@ return {
         -- BufReadPost   → when opening an existing file
         -- InsertLeave   → after leaving insert mode (Could remove later) 
         local lint_augroup = vim.api.nvim_create_augroup("nvim_lint", { clear = true })
-        vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+        vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost"}, {
             group    = lint_augroup,
             callback = function()
                 -- Only lint if a linter is configured for this filetype
