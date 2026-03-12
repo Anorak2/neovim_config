@@ -47,6 +47,13 @@ return {
 						usePlaceholders = true,
 					}
 				end,
+				["pyright"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.pyright.setup {
+						typeCheckingMode = false,
+						indexing = false
+					}
+				end,
             }
         })
 
