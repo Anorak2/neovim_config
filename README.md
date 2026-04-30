@@ -1,5 +1,8 @@
 ### Adam's neovim config
 
+This project has been archived and the source code moved to /dot-files, this repo contains additional configurations such as my sway and swaybar config
+
+
 this is initially ripped from the Primeagen's repo but I tore out a lot of the functionality that I didn't want as well as using the keybings/settings that I like.
 
 Leaving this here to avoid wasting hours recreating it
